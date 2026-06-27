@@ -1,0 +1,799 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Yifan Lyu | Philip</title>
+    <meta name="description" content="Personal academic portfolio for Yifan Lyu, a Computer Science master's student at the University of Macau researching multimodal learning, trustworthy AI, biometric privacy, and computer vision.">    <link rel="icon" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2NCA2NCIgcm9sZT0iaW1nIiBhcmlhLWxhYmVsPSJZTCI+CiAgPHJlY3Qgd2lkdGg9IjY0IiBoZWlnaHQ9IjY0IiByeD0iMTYiIGZpbGw9IiMxMDE4MTYiLz4KICA8Y2lyY2xlIGN4PSIzMiIgY3k9IjMyIiByPSIyMSIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjZDlmZmY5IiBzdHJva2Utd2lkdGg9IjIiLz4KICA8dGV4dCB4PSIzMiIgeT0iMzgiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtZmFtaWx5PSJBcmlhbCwgc2Fucy1zZXJpZiIgZm9udC1zaXplPSIxOCIgZm9udC13ZWlnaHQ9IjcwMCIgZmlsbD0iI2ZmZmZmZiI+WUw8L3RleHQ+Cjwvc3ZnPgo=" type="image/svg+xml">    <style>
+:root {
+  color-scheme: light;
+  --ink: #17201d;
+  --muted: #59645f;
+  --paper: #f8f7f2;
+  --surface: #ffffff;
+  --line: #d9ddd4;
+  --teal: #0f766e;
+  --teal-dark: #0c4f4b;
+  --coral: #d65f45;
+  --gold: #b58937;
+  --charcoal: #101816;
+  --shadow: 0 18px 50px rgba(19, 31, 29, 0.12);
+  --radius: 8px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  line-height: 1.6;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+.site-header {
+  position: fixed;
+  z-index: 20;
+  top: 0;
+  right: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  padding: 18px clamp(18px, 4vw, 54px);
+  color: #fff;
+  transition: background 180ms ease, box-shadow 180ms ease, color 180ms ease;
+}
+
+.site-header.is-scrolled {
+  background: rgba(248, 247, 242, 0.92);
+  color: var(--ink);
+  box-shadow: 0 1px 0 rgba(16, 24, 22, 0.08);
+  backdrop-filter: blur(18px);
+}
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 800;
+}
+
+.brand-mark {
+  display: grid;
+  width: 38px;
+  height: 38px;
+  place-items: center;
+  border: 1px solid currentColor;
+  border-radius: 50%;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 13px;
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  gap: clamp(14px, 3vw, 30px);
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.nav a {
+  opacity: 0.86;
+}
+
+.nav a:hover {
+  opacity: 1;
+}
+
+.hero {
+  position: relative;
+  min-height: 92vh;
+  display: grid;
+  align-items: end;
+  overflow: hidden;
+  background: var(--charcoal);
+}
+
+.hero-media,
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.hero-media {
+  object-fit: cover;
+}
+
+.hero-overlay {
+  background:
+    linear-gradient(90deg, rgba(8, 15, 14, 0.93), rgba(8, 15, 14, 0.68) 44%, rgba(8, 15, 14, 0.2)),
+    linear-gradient(0deg, rgba(8, 15, 14, 0.86), rgba(8, 15, 14, 0.08) 48%);
+}
+
+.hero-content {
+  position: relative;
+  z-index: 1;
+  width: min(1040px, calc(100% - 36px));
+  margin: 0 auto;
+  padding: 150px 0 82px;
+  color: #fff;
+}
+
+.eyebrow,
+.section-kicker {
+  margin: 0 0 14px;
+  color: var(--coral);
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 13px;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.hero h1 {
+  max-width: 900px;
+  margin: 0;
+  font-size: clamp(58px, 9vw, 128px);
+  line-height: 0.92;
+  letter-spacing: 0;
+}
+
+.hero h1 span {
+  color: #d9fff9;
+}
+
+.hero-copy {
+  max-width: 720px;
+  margin: 28px 0 0;
+  color: rgba(255, 255, 255, 0.86);
+  font-size: clamp(18px, 2vw, 24px);
+}
+
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 34px;
+}
+
+.button {
+  display: inline-flex;
+  min-height: 46px;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(255, 255, 255, 0.72);
+  border-radius: var(--radius);
+  padding: 0 18px;
+  font-weight: 800;
+}
+
+.button.primary {
+  border-color: #fff;
+  background: #fff;
+  color: var(--ink);
+}
+
+.button.ghost:hover {
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.quick-panel {
+  display: grid;
+  width: min(1120px, calc(100% - 36px));
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1px;
+  margin: -42px auto 0;
+  position: relative;
+  z-index: 3;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--line);
+  box-shadow: var(--shadow);
+}
+
+.quick-panel div {
+  min-height: 128px;
+  padding: 24px;
+  background: var(--surface);
+}
+
+.stat {
+  display: block;
+  color: var(--teal-dark);
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: clamp(28px, 4vw, 44px);
+  font-weight: 800;
+  line-height: 1;
+}
+
+.label {
+  display: block;
+  margin-top: 10px;
+  color: var(--muted);
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.section {
+  width: min(1120px, calc(100% - 36px));
+  margin: 0 auto;
+  padding: 94px 0 0;
+}
+
+.intro-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.1fr);
+  gap: clamp(34px, 7vw, 84px);
+  align-items: start;
+}
+
+h2 {
+  margin: 0;
+  font-size: clamp(32px, 4.5vw, 56px);
+  line-height: 1.04;
+  letter-spacing: 0;
+}
+
+h3 {
+  margin: 0;
+  font-size: 22px;
+  line-height: 1.25;
+  letter-spacing: 0;
+}
+
+p {
+  margin: 0;
+}
+
+.intro-copy p,
+.section-heading p {
+  color: var(--muted);
+  font-size: 18px;
+}
+
+.tag-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  padding: 0;
+  margin: 26px 0 0;
+  list-style: none;
+}
+
+.tag-list li,
+.pill {
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: #fff;
+  color: var(--teal-dark);
+  padding: 8px 12px;
+  font-size: 13px;
+  font-weight: 800;
+}
+
+.section-heading {
+  display: grid;
+  grid-template-columns: 0.8fr 1fr;
+  gap: 38px;
+  align-items: end;
+  margin-bottom: 28px;
+}
+
+.feature-list {
+  display: grid;
+  gap: 16px;
+}
+
+.feature-card,
+.project-card,
+.compact-grid article {
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--surface);
+  box-shadow: 0 10px 28px rgba(19, 31, 29, 0.05);
+}
+
+.feature-card {
+  padding: clamp(24px, 4vw, 38px);
+}
+
+.feature-card p {
+  max-width: 900px;
+  margin-top: 12px;
+  color: var(--muted);
+}
+
+.feature-card .pill {
+  display: inline-flex;
+  margin-top: 18px;
+}
+
+.card-meta,
+.stack {
+  color: var(--gold);
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.card-meta {
+  margin-bottom: 10px;
+}
+
+.split-section {
+  display: grid;
+  grid-template-columns: 240px 1fr;
+  gap: 52px;
+}
+
+.timeline {
+  display: grid;
+  gap: 18px;
+}
+
+.timeline-item {
+  display: grid;
+  grid-template-columns: 170px 1fr;
+  gap: 24px;
+  border-bottom: 1px solid var(--line);
+  padding-bottom: 24px;
+}
+
+.timeline-date {
+  color: var(--teal-dark);
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 13px;
+  font-weight: 800;
+}
+
+.timeline-body p {
+  margin-top: 8px;
+  color: var(--muted);
+}
+
+.small-text {
+  font-size: 15px;
+}
+
+.project-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.project-card {
+  display: flex;
+  min-height: 260px;
+  flex-direction: column;
+  gap: 14px;
+  padding: 24px;
+}
+
+.project-card p:not(.stack) {
+  color: var(--muted);
+}
+
+.project-card strong {
+  margin-top: auto;
+  color: var(--teal-dark);
+}
+
+.compact-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.compact-grid .section-kicker {
+  grid-column: 1 / -1;
+}
+
+.compact-grid article {
+  padding: 24px;
+}
+
+.compact-grid h2 {
+  font-size: 25px;
+}
+
+.compact-grid p:last-child {
+  margin-top: 14px;
+  color: var(--muted);
+}
+
+.contact-section {
+  display: grid;
+  width: min(1120px, calc(100% - 36px));
+  grid-template-columns: minmax(0, 1.05fr) minmax(280px, 0.75fr);
+  gap: 36px;
+  margin: 94px auto 0;
+  border-radius: var(--radius);
+  background: var(--charcoal);
+  color: #fff;
+  padding: clamp(28px, 5vw, 48px);
+}
+
+.contact-section h2 {
+  max-width: 780px;
+  font-size: clamp(30px, 4vw, 48px);
+}
+
+.contact-links {
+  display: grid;
+  gap: 12px;
+  align-content: center;
+}
+
+.contact-links a,
+.contact-links span {
+  display: block;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.18);
+  padding-bottom: 12px;
+  color: rgba(255, 255, 255, 0.82);
+  font-weight: 700;
+  overflow-wrap: anywhere;
+}
+
+.contact-links a:hover {
+  color: #fff;
+}
+
+.footer {
+  display: flex;
+  width: min(1120px, calc(100% - 36px));
+  justify-content: space-between;
+  gap: 18px;
+  margin: 0 auto;
+  padding: 34px 0 42px;
+  color: var(--muted);
+  font-size: 14px;
+  font-weight: 700;
+}
+
+@media (max-width: 840px) {
+  .site-header {
+    align-items: flex-start;
+    padding: 14px 18px;
+  }
+
+  .nav {
+    max-width: 250px;
+    justify-content: flex-end;
+    flex-wrap: wrap;
+    gap: 8px 15px;
+  }
+
+  .hero {
+    min-height: 88vh;
+  }
+
+  .hero-content {
+    padding-bottom: 62px;
+  }
+
+  .quick-panel,
+  .project-grid,
+  .compact-grid,
+  .contact-section,
+  .intro-grid,
+  .section-heading,
+  .split-section {
+    grid-template-columns: 1fr;
+  }
+
+  .quick-panel {
+    margin-top: 0;
+  }
+
+  .quick-panel div {
+    min-height: 104px;
+  }
+
+  .timeline-item {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+}
+
+@media (max-width: 560px) {
+  .brand span:last-child {
+    display: none;
+  }
+
+  .nav {
+    font-size: 13px;
+  }
+
+  .hero h1 {
+    font-size: 54px;
+  }
+
+  .hero-copy {
+    font-size: 17px;
+  }
+
+  .button {
+    width: 100%;
+  }
+
+  .section {
+    padding-top: 72px;
+  }
+}
+
+    </style>
+  </head>
+  <body>
+    <header class="site-header" data-header>
+      <a class="brand" href="#top" aria-label="Yifan Lyu home">
+        <span class="brand-mark">YL</span>
+        <span>Yifan Lyu</span>
+      </a>
+      <nav class="nav" aria-label="Primary navigation">
+        <a href="#research">Research</a>
+        <a href="#education">Education</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </header>
+
+    <main id="top">
+      <section class="hero" aria-labelledby="hero-title">
+        <img class="hero-media" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxNjAwIDkwMCI+PGRlZnM+PHJhZGlhbEdyYWRpZW50IGlkPSJnIiBjeD0iNjglIiBjeT0iMzUlIiByPSI3MCUiPjxzdG9wIHN0b3AtY29sb3I9IiMxODNjMzkiLz48c3RvcCBvZmZzZXQ9IjAuNDIiIHN0b3AtY29sb3I9IiMxMzIzMjAiLz48c3RvcCBvZmZzZXQ9IjEiIHN0b3AtY29sb3I9IiMwODBkMGMiLz48L3JhZGlhbEdyYWRpZW50PjxsaW5lYXJHcmFkaWVudCBpZD0ibCIgeDE9IjAiIHgyPSIxIj48c3RvcCBzdG9wLWNvbG9yPSIjZDY1ZjQ1Ii8+PHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjNDljNWI2Ii8+PC9saW5lYXJHcmFkaWVudD48L2RlZnM+PHJlY3Qgd2lkdGg9IjE2MDAiIGhlaWdodD0iOTAwIiBmaWxsPSJ1cmwoI2cpIi8+PGcgb3BhY2l0eT0iLjQyIiBmaWxsPSJub25lIiBzdHJva2U9IiNkOWZmZjkiPjxwYXRoIGQ9Ik0xMDMwIDgwYy0xMjAgMTIwLTEzMCAzMTUtMjIgNDUwIDYxIDc2IDE1NyAxMjcgMjU0IDEzNCIvPjxwYXRoIGQ9Ik0xMTMwIDYwYy03NSAxODAtNTcgMzcwIDY4IDU0MCIvPjxwYXRoIGQ9Ik05NjAgMjUwYzEzMC01MCAyNjAtNTUgMzkwLTEwIi8+PC9nPjxnIG9wYWNpdHk9Ii40NSIgc3Ryb2tlPSIjNDljNWI2IiBzdHJva2Utd2lkdGg9IjIiPjxwYXRoIGQ9Ik0xMDMwIDE2NWwxMTAgNDUgMTMyLTg4IDkyIDEzMC04NCAxMTUgMTE2IDg4LTE0MCA4OC0xMjAtNTgtMTA0IDk2LTk0LTEyNSA2MC0xMTktOTQtNzh6IiBmaWxsPSJub25lIi8+PGNpcmNsZSBjeD0iMTAzMCIgY3k9IjE2NSIgcj0iOCIgZmlsbD0iIzQ5YzViNiIvPjxjaXJjbGUgY3g9IjExNDAiIGN5PSIyMTAiIHI9IjciIGZpbGw9IiM0OWM1YjYiLz48Y2lyY2xlIGN4PSIxMjcyIiBjeT0iMTIyIiByPSI3IiBmaWxsPSIjZDY1ZjQ1Ii8+PGNpcmNsZSBjeD0iMTM2NCIgY3k9IjI1MiIgcj0iOCIgZmlsbD0iI2Q2YjQ2YSIvPjxjaXJjbGUgY3g9IjEyODAiIGN5PSIzNjciIHI9IjciIGZpbGw9IiM0OWM1YjYiLz48Y2lyY2xlIGN4PSIxMzk2IiBjeT0iNDU1IiByPSI3IiBmaWxsPSIjZDY1ZjQ1Ii8+PGNpcmNsZSBjeD0iMTI1NiIgY3k9IjU0MyIgcj0iOCIgZmlsbD0iI2Q2YjQ2YSIvPjxjaXJjbGUgY3g9IjExMzYiIGN5PSI0ODUiIHI9IjciIGZpbGw9IiM0OWM1YjYiLz48Y2lyY2xlIGN4PSIxMDMyIiBjeT0iNTgxIiByPSI3IiBmaWxsPSIjZDY1ZjQ1Ii8+PGNpcmNsZSBjeD0iOTM4IiBjeT0iNDU2IiByPSI4IiBmaWxsPSIjZDZiNDZhIi8+PGNpcmNsZSBjeD0iOTk4IiBjeT0iMzM3IiByPSI3IiBmaWxsPSIjNDljNWI2Ii8+PGNpcmNsZSBjeD0iOTA0IiBjeT0iMjU5IiByPSI3IiBmaWxsPSIjZDY1ZjQ1Ii8+PC9nPjxnIG9wYWNpdHk9Ii4zIiBmaWxsPSJub25lIiBzdHJva2U9InVybCgjbCkiIHN0cm9rZS13aWR0aD0iMyI+PHBhdGggZD0iTTExMCA2NTBjMTcwLTEyMCAzMTAtMTIwIDQ4MCAwczMxNSAxMjAgNDkyLTQiLz48cGF0aCBkPSJNOTAgNzEwYzE5MC05MiAzMDAtNzggNDcwIDIwczMzMCA3OCA1MjAtMjAiLz48cGF0aCBkPSJNMTIwIDU5MGMyMTAtMTUwIDM3MC0xNDIgNTM1IDUiLz48L2c+PGcgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMTI0MCA0MTApIiBvcGFjaXR5PSIuMzYiIHN0cm9rZT0iI2Q5ZmZmOSIgZmlsbD0ibm9uZSI+PHBhdGggZD0iTTAgMjUwVjU1YzAtMjQgMzYtMjQgMzYgMHY5NVYyMmMwLTI0IDM4LTI0IDM4IDB2MTI4VjM4YzAtMjQgMzgtMjQgMzggMHYxMjRWNzJjMC0yNCAzOC0yNCAzOCAwdjE0MmwzMi01OGMxMS0yMCA0Mi01IDMyIDE3bC01NCAxMjJjLTIwIDQ1LTU0IDcyLTEwMyA3Mkg1MWMtMzIgMC01MS0yNS01MS0xMTd6Ii8+PHBhdGggZD0iTTAgMjUwYzM4LTIwIDc4LTI4IDEyMC0yNCIvPjwvZz48ZyBvcGFjaXR5PSIuMjQiIGZpbGw9IiNkOWZmZjkiPjxjaXJjbGUgY3g9IjIyMCIgY3k9IjIxMCIgcj0iMiIvPjxjaXJjbGUgY3g9IjI2MCIgY3k9IjI1MCIgcj0iMiIvPjxjaXJjbGUgY3g9IjMxMCIgY3k9IjE5MCIgcj0iMiIvPjxjaXJjbGUgY3g9IjM2MCIgY3k9IjI2MCIgcj0iMiIvPjxjaXJjbGUgY3g9IjQxMCIgY3k9IjIyMCIgcj0iMiIvPjxjaXJjbGUgY3g9IjQ2MCIgY3k9IjI5MCIgcj0iMiIvPjxwYXRoIGQ9Ik0yMjAgMjEwbDkwLTIwIDUwIDcwIDEwMCAzME0yNjAgMjUwbDEwMCAxMCA1MC00MCIgc3Ryb2tlPSIjZDlmZmY5IiBmaWxsPSJub25lIi8+PC9nPjwvc3ZnPg==" alt="Abstract AI research visual with neural nodes, optical-flow traces, and biometric privacy motifs.">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+          <p class="eyebrow">Computer Science · University of Macau</p>
+          <h1 id="hero-title">Yifan Lyu <span>Philip</span></h1>
+          <p class="hero-copy">
+            Master's student researching multimodal learning, AI security, trustworthy AI,
+            biometric information protection, and computer vision systems.
+          </p>
+          <div class="hero-actions" aria-label="Contact and profile links">
+            <a class="button primary" href="mailto:philiplyu999@gmail.com">Email me</a>
+            <a class="button ghost" href="#research">View research</a>
+          </div>
+        </div>
+      </section>
+
+      <section class="quick-panel" aria-label="Profile highlights">
+        <div>
+          <span class="stat">3.85 / 4</span>
+          <span class="label">Master's GPA through Spring 2026</span>
+        </div>
+        <div>
+          <span class="stat">3rd</span>
+          <span class="label">Best Final Year Projects, CIS 2023/2024</span>
+        </div>
+        <div>
+          <span class="stat">6</span>
+          <span class="label">Dean's Honor List semesters</span>
+        </div>
+        <div>
+          <span class="stat">2026</span>
+          <span class="label">IEEE SMC reviewer</span>
+        </div>
+      </section>
+
+      <section class="section intro-section" id="about">
+        <div class="section-kicker">Profile</div>
+        <div class="intro-grid">
+          <div>
+            <h2>Building privacy-aware AI for people-centered visual intelligence.</h2>
+          </div>
+          <div class="intro-copy">
+            <p>
+              I am a Computer Science master's student at the University of Macau, with a
+              research focus spanning multimodal learning, trustworthy AI, AI security,
+              biometric privacy, and visual recognition. My recent work explores facial
+              dynamics for video-based kinship verification and training-free hand
+              de-identification for biometric privacy.
+            </p>
+            <ul class="tag-list" aria-label="Skills and interests">
+              <li>Python</li>
+              <li>C / C++</li>
+              <li>MATLAB</li>
+              <li>Java</li>
+              <li>MySQL</li>
+              <li>R</li>
+              <li>Multimodal Learning</li>
+              <li>Trustworthy AI</li>
+              <li>Biometrics</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="research">
+        <div class="section-kicker">Research</div>
+        <div class="section-heading">
+          <h2>Research Experience</h2>
+          <p>Selected work in computer vision, biometric privacy, and video-based analysis.</p>
+        </div>
+        <div class="feature-list">
+          <article class="feature-card">
+            <div class="card-meta">Final Year Project · Supervisor: Prof. Yibo Bob Zhang</div>
+            <h3>Research on Age Progression of Missing Children</h3>
+            <p>
+              Built an age progression approach for children's faces using four CycleGAN
+              models that combine local and global transformations to preserve identity
+              while transferring appearance across age domains.
+            </p>
+            <p>
+              Trained on UTK-Face and YLFW datasets using NVIDIA A100 Tensor Core GPU
+              resources on the University of Macau HPCC.
+            </p>
+            <span class="pill">Ranked 3rd in Best Final Year Projects, CIS 2023/2024</span>
+          </article>
+
+          <article class="feature-card">
+            <div class="card-meta">Under review · IJCB 2026</div>
+            <h3>DynamicKin: Learning Facial Dynamics via Optical Flow for Video-Based Kinship Verification</h3>
+            <p>
+              Proposed DynamicKin, a video-based kinship verification framework combining
+              facial appearance features with optical-flow-based facial motion cues.
+            </p>
+            <p>
+              Introduced the Smiling Kinship Videos dataset to support future work in
+              dynamic kinship verification.
+            </p>
+            <span class="pill">Yifan Lyu, Bob Zhang*</span>
+          </article>
+
+          <article class="feature-card">
+            <div class="card-meta">Under review · TIFS</div>
+            <h3>A Self-Semantic-Structural-Guided Approach for Training-Free Full-Hand De-Identification</h3>
+            <p>
+              Developed a diffusion-based inpainting framework that uses semantic and
+              structural guidance to protect hand biometric privacy while preserving image
+              realism and background consistency.
+            </p>
+            <p>
+              The method removes identity-related hand features and maintains usability
+              across multiple datasets and recognition systems.
+            </p>
+            <span class="pill">Biometric Privacy · Diffusion Inpainting</span>
+          </article>
+        </div>
+      </section>
+
+      <section class="section split-section" id="education">
+        <div class="section-kicker">Education</div>
+        <div class="timeline">
+          <article class="timeline-item">
+            <div class="timeline-date">Sep 2024 - Jun 2027</div>
+            <div class="timeline-body">
+              <h3>Master of Computer Science</h3>
+              <p>University of Macau · GPA 3.85 / 4 through Spring 2026</p>
+              <p class="small-text">Relevant modules: Design and Analysis of Algorithms, Advanced Topics in Computer Science II, Applied Natural Language Processing.</p>
+            </div>
+          </article>
+          <article class="timeline-item">
+            <div class="timeline-date">Sep 2020 - Jun 2024</div>
+            <div class="timeline-body">
+              <h3>Bachelor of Computer Science</h3>
+              <p>University of Macau · Artificial Intelligence concentration · GPA 3.72 / 4</p>
+              <p class="small-text">Awards: FST Dean's Honor List Award 2023/2024, HFPJC Foundation Scholarship, Kam Kwong Education Scholarship, and FST Dean's Honor List for six semesters.</p>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="section" id="projects">
+        <div class="section-kicker">Projects</div>
+        <div class="section-heading">
+          <h2>Selected Technical Projects</h2>
+          <p>Applied machine learning, NLP, image processing, and Android development.</p>
+        </div>
+        <div class="project-grid">
+          <article class="project-card">
+            <h3>Traffic Sign Classification</h3>
+            <p class="stack">Python · Jupyter Notebook · Scikit-learn</p>
+            <p>Classified German Traffic Sign Benchmark images into 11 categories using SVM, Random Forest, and MLP models with CLAHE and Standard Scaler preprocessing.</p>
+            <strong>F1 score: 97%</strong>
+          </article>
+          <article class="project-card">
+            <h3>Named Entity Recognition</h3>
+            <p class="stack">Python · Flask</p>
+            <p>Implemented a Maximum Entropy Markov Model for NER with feature experiments including n-grams and POS tagging, then deployed an online Flask application.</p>
+            <strong>F1 score: 95%</strong>
+          </article>
+          <article class="project-card">
+            <h3>Pixel-wise Contour Detection</h3>
+            <p class="stack">MATLAB</p>
+            <p>Implemented Moore Algorithm contour extraction for binary images, applying Jacob's Rule to improve border-pixel tracing performance.</p>
+          </article>
+          <article class="project-card">
+            <h3>King of Karaoke</h3>
+            <p class="stack">Java · Android Studio</p>
+            <p>Built an Android application with authentication, quiz templates, music playback, score upload, and result demonstrations using Auth0, JSONBin, and imageio APIs.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section compact-grid" id="experience">
+        <div class="section-kicker">Experience & Service</div>
+        <article>
+          <h2>Teaching Assistant</h2>
+          <p class="stack">CISC4000 - Graduation Project · Sep 2024 - Jan 2026</p>
+          <p>
+            Assisted with monitoring student meeting-note uploads, organizing progress
+            statistics, and providing comments and suggestions based on each student's
+            project status.
+          </p>
+        </article>
+        <article>
+          <h2>Academic Service</h2>
+          <p class="stack">Reviewer · 2026 IEEE International Conference on Systems, Man, and Cybernetics</p>
+          <p>
+            Supported scholarly review for an international conference spanning systems,
+            human-machine interaction, and cybernetics research.
+          </p>
+        </article>
+        <article>
+          <h2>Community Service</h2>
+          <p class="stack">HFPJC Community Service Group · National Games Volunteer</p>
+          <p>
+            Joined and organized volunteer activities including Hac Sa Beach cleaning,
+            local orphanage visits, retirement-home support, and Macau Competition Zone
+            service for the Guangdong-Hong Kong-Macao Greater Bay Area National Games.
+          </p>
+        </article>
+      </section>
+
+      <section class="contact-section" id="contact">
+        <div>
+          <p class="section-kicker">Contact</p>
+          <h2>Open to research conversations and suitable AI opportunities.</h2>
+        </div>
+        <div class="contact-links">
+          <a href="mailto:philiplyu999@gmail.com">philiplyu999@gmail.com</a>
+          <a href="mailto:mc45158@um.edu.mo">mc45158@um.edu.mo</a>
+          <span>University of Macau · Macau SAR</span>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <span>© <span data-year></span> Yifan Lyu</span>
+      <a href="#top">Back to top</a>
+    </footer>
+
+    <script>
+const header = document.querySelector("[data-header]");
+const year = document.querySelector("[data-year]");
+
+if (year) {
+  year.textContent = new Date().getFullYear();
+}
+
+const syncHeader = () => {
+  if (!header) return;
+  header.classList.toggle("is-scrolled", window.scrollY > 24);
+};
+
+syncHeader();
+window.addEventListener("scroll", syncHeader, { passive: true });
+
+    </script>
+  </body>
+</html>
